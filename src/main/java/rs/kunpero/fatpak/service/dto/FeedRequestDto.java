@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.dto;
+package rs.kunpero.fatpak.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

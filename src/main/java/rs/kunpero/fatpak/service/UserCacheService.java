@@ -20,7 +20,7 @@ import static java.util.stream.Collectors.toConcurrentMap;
 @Service
 @Slf4j
 public class UserCacheService {
-    private static Map<String, String> userCache;
+    private static Map<String, User> userCache;
 
     private final MethodsClient methodsClient;
 
@@ -36,27 +36,41 @@ public class UserCacheService {
         final List<User> members = retrieveUserList();
         userCache = members.stream()
                 .filter(user -> !user.isDeleted())
-                .collect(toConcurrentMap(user -> "@" + user.getName(), User::getId));
+                .collect(toConcurrentMap(user -> "@" + user.getName(), user -> user));
         log.info("Initialized userCache: [{}]", userCache);
     }
 
-    public String getUserIdFromCache(String username) throws IOException, SlackApiException {
-        String userId = userCache.get(username);
+    public String getUserIdFromCache(final String username) throws IOException, SlackApiException {
+        final User user = tryToFind(username);
 
-        if (userId == null) {
+        if (user == null) {
+            return null;
+        }
+        return user.getId();
+    }
+
+    public User getUser(String username) throws IOException, SlackApiException {
+        return tryToFind(username);
+    }
+
+    private User tryToFind(String username) throws IOException, SlackApiException {
+        final User user = userCache.get(username);
+
+        if (user == null || user.getId() == null) {
             log.info("Username [{}] was not found in cache. Try to find it again using slack-api", username);
             final List<User> members = retrieveUserList();
             Optional<User> optionalUser = members.stream()
-                    .filter(user -> username.equals(user.getName()))
+                    .filter(u -> username.equals(u.getName()))
                     .findFirst();
             if (optionalUser.isPresent()) {
-                userCache.put(username, optionalUser.get().getId());
+                userCache.put(username, optionalUser.get());
+                return optionalUser.get();
             } else {
                 log.warn("No username [{}] was found in the workspace", username);
                 return null;
             }
         }
-        return userId;
+        return user;
     }
 
     private List<User> retrieveUserList() throws IOException, SlackApiException {

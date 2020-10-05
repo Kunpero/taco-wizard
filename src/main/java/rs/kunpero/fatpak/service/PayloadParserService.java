@@ -2,9 +2,11 @@ package rs.kunpero.fatpak.service;
 
 import com.slack.api.app_backend.slash_commands.payload.SlashCommandPayload;
 import com.slack.api.methods.SlackApiException;
+import com.slack.api.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import rs.kunpero.fatpak.dto.FeedRequestDto;
+import org.springframework.util.Assert;
+import rs.kunpero.fatpak.service.dto.FeedRequestDto;
 import rs.kunpero.fatpak.util.exception.PayloadParserException;
 
 import java.io.IOException;
@@ -25,6 +27,13 @@ public class PayloadParserService {
             IOException, SlackApiException {
         log.info("Incoming text: [{}]", payload.getText());
         final String[] parsedText = parsePayload(payload);
+
+        final User user = userCacheService.getUser(payload.getUserName());
+        Assert.notNull(user, "user is null " + user.getName());
+        if (!user.isAdmin() && !user.isOwner()) {
+            log.error("Only admin/owner can use this command");
+            throw new PayloadParserException("action.not.permitted");
+        }
 
         final String fromUserId = payload.getUserId();
         final String toUserId = userCacheService.getUserIdFromCache(parsedText[0]);

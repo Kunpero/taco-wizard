@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id "org.springframework.boot" version "2.1.8.RELEASE"
+}
+
+sourceCompatibility = 1.11
+
+group 'rs.kunpero'
+version '1.0-SNAPSHOT'
+
+bootJar {
+    baseName "fat-pak"
+    launchScript()
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+apply from: "./libraries.gradle"
+
+dependencies {
+    implementation libraries.springBootStarterWeb, withoutTomcat
+    implementation libraries.springBootStarterJetty, withoutWebSocket
+    implementation libraries.springBootSecurity
+    implementation libraries.slackAppBackend
+    implementation libraries.gson
+    implementation libraries.commonsIo
+    implementation libraries.springBootBucket4j
+
+    compileOnly libraries.lombok
+    annotationProcessor libraries.lombok
+    testCompile libraries.springBootStarterTest
+}
+
