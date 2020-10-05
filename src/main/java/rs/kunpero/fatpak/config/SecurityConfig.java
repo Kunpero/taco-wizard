@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public FilterRegistrationBean slackRequestVerifierFilterRegistration(SlackRequestVerifierFilter filter) {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(filter);
-        registration.addUrlPatterns("/taco-wizard/*");
+        registration.addUrlPatterns("/feed/*");
         registration.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return registration;
     }

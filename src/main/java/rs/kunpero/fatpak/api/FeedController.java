@@ -29,7 +29,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
 @Slf4j
-@RequestMapping("/taco-wizard")
+@RequestMapping("/feed")
 @AllArgsConstructor
 public class FeedController {
     private static final SlashCommandPayloadParser SLASH_COMMAND_PAYLOAD_PARSER = new SlashCommandPayloadParser();
