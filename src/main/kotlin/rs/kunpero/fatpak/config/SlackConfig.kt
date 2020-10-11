@@ -14,56 +14,56 @@ import org.springframework.http.converter.json.GsonHttpMessageConverter
 import org.springframework.web.client.RestTemplate
 
 @Configuration
-open class SlackConfig (
+class SlackConfig (
     @Value("\${slack.signing.secret}")
     private val signingSecret: String,
     @Value("\${slack.access.token}")
     private val accessToken: String
 ){
     @Bean
-    open fun slack(): Slack {
+    fun slack(): Slack {
         return Slack.getInstance()
     }
 
     @Bean
-    open fun methodsClient(): MethodsClient {
+    fun methodsClient(): MethodsClient {
         return slack().methods(accessToken)
     }
 
     @Bean
-    open fun responseSender(slack: Slack): ActionResponseSender {
+    fun responseSender(slack: Slack): ActionResponseSender {
         return ActionResponseSender(slack)
     }
 
     @Bean
-    open fun gsonHttpMessageConverter(gson: Gson): GsonHttpMessageConverter {
+    fun gsonHttpMessageConverter(gson: Gson): GsonHttpMessageConverter {
         val converter = GsonHttpMessageConverter()
         converter.gson = gson
         return converter
     }
 
     @Bean
-    open fun gson(): Gson {
+    fun gson(): Gson {
         return GsonFactory.createSnakeCase()
     }
 
     @Bean
-    open fun slackSignatureGenerator(): SlackSignature.Generator {
+    fun slackSignatureGenerator(): SlackSignature.Generator {
         return SlackSignature.Generator(signingSecret)
     }
 
     @Bean
-    open fun slackSignatureVerifier(slackSignatureGenerator: SlackSignature.Generator): SlackSignatureVerifier {
+    fun slackSignatureVerifier(slackSignatureGenerator: SlackSignature.Generator): SlackSignatureVerifier {
         return SlackSignatureVerifier(slackSignatureGenerator)
     }
 
     @Bean
-    open fun actionResponseSender(slack: Slack): ActionResponseSender {
+    fun actionResponseSender(slack: Slack): ActionResponseSender {
         return ActionResponseSender(slack)
     }
 
     @Bean
-    open fun restTemplate(): RestTemplate {
+    fun restTemplate(): RestTemplate {
         return RestTemplate()
     }
 }

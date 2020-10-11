@@ -26,7 +26,7 @@ class FeedParserUtils {
             log.info("Parsed array: username:[{}], amount:[{}], commentary:[{}]",
                 list[0],
                 list[1],
-                list.takeIf { list.size == 2 }?.apply { list[2] }
+                list.takeIf { list.size == 3 }?.apply { list[2] }
             )
             return list
         }

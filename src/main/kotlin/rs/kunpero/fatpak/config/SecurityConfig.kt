@@ -12,7 +12,7 @@ import rs.kunpero.fatpak.config.filter.SlackRequestVerifierFilter
 import javax.servlet.http.HttpServletRequest
 
 @EnableWebSecurity
-open class SecurityConfig : WebSecurityConfigurerAdapter() {
+class SecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http
             .authorizeRequests()
@@ -30,12 +30,12 @@ open class SecurityConfig : WebSecurityConfigurerAdapter() {
     }
 
     @Bean
-    open fun slackRequestVerifierFilter(slackSignatureVerifier: SlackSignatureVerifier): SlackRequestVerifierFilter {
+    fun slackRequestVerifierFilter(slackSignatureVerifier: SlackSignatureVerifier): SlackRequestVerifierFilter {
         return SlackRequestVerifierFilter(slackSignatureVerifier)
     }
 
     @Bean
-    open fun slackRequestVerifierFilterRegistration(filter: SlackRequestVerifierFilter): FilterRegistrationBean<SlackRequestVerifierFilter> {
+    fun slackRequestVerifierFilterRegistration(filter: SlackRequestVerifierFilter): FilterRegistrationBean<SlackRequestVerifierFilter> {
         val registration: FilterRegistrationBean<SlackRequestVerifierFilter> = FilterRegistrationBean()
         registration.filter = filter
         registration.addUrlPatterns("/feed/*")

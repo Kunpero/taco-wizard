@@ -20,7 +20,7 @@ class PayloadParserService(
     }
 
     @Throws(PayloadParserException::class, NumberFormatException::class, IOException::class, SlackApiException::class)
-    fun parse(payload: SlashCommandPayload): FeedRequestDto? {
+    fun parse(payload: SlashCommandPayload): FeedRequestDto {
         log.info("Incoming text: [{}]", payload.text)
         val parsedText: List<String> = parsePayload(payload)
         val user = userCacheService.getUser(payload.userName)
