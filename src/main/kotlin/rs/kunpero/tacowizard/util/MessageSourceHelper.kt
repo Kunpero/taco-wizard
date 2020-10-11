@@ -17,10 +17,7 @@ class MessageSourceHelper(
         return code.toInt()
     }
 
-    fun getMessage(
-        source: String,
-        @Nullable args: Array<String?>?
-    ): String? {
+    fun getMessage(source: String, @Nullable args: Array<String?>?): String {
         return messageSource.getMessage("$source.message", args, Locale(defaultLocale))
     }
 }
