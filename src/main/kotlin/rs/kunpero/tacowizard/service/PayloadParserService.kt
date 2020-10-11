@@ -36,7 +36,7 @@ class PayloadParserService(
         if (amount <= 0) {
             throw PayloadParserException("wrong.amount.format")
         }
-        val commentary = parsedText[2]
+        val commentary = if (parsedText.size == 3 ) parsedText[2] else ""
         return FeedRequestDto(fromUserId, toUserId, amount, commentary)
     }
 }

@@ -23,11 +23,7 @@ class FeedParserUtils {
                 log.error("Not enough arguments")
                 throw PayloadParserException("not.enough.arguments")
             }
-            log.info("Parsed array: username:[{}], amount:[{}], commentary:[{}]",
-                list[0],
-                list[1],
-                list.takeIf { list.size == 3 }?.apply { list[2] }
-            )
+            log.info("Parsed array: [{}]", list)
             return list
         }
     }

@@ -5,6 +5,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.ResponseBody
 import rs.kunpero.tacowizard.util.ApiUtills.Companion.buildResponse
 import rs.kunpero.tacowizard.util.MessageSourceHelper
 import rs.kunpero.tacowizard.util.exception.PayloadParserException
@@ -20,16 +21,19 @@ class GlobalExceptionHandler(
     }
 
     @ExceptionHandler(PayloadParserException::class)
+    @ResponseBody
     fun handlePayloadParserException(ex: PayloadParserException): SlashCommandResponse {
         return buildResponse(messageSourceHelper.getMessage(ex.message!!, null))
     }
 
     @ExceptionHandler(NumberFormatException::class)
+    @ResponseBody
     fun handleNumberFormatException(ex: NumberFormatException): SlashCommandResponse {
         return buildResponse(messageSourceHelper.getMessage("incorrect.amount.format", null))
     }
 
     @ExceptionHandler(Exception::class)
+    @ResponseBody
     fun handleException(ex: NumberFormatException): SlashCommandResponse {
         log.error("System error", ex)
         return buildResponse(messageSourceHelper.getMessage("system.error", null))
