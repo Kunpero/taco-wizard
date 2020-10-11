@@ -8,6 +8,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpEntity
+import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import rs.kunpero.tacowizard.integration.dto.GiveTacoRequest
 import rs.kunpero.tacowizard.integration.dto.GiveTacoResponse
@@ -15,6 +16,7 @@ import rs.kunpero.tacowizard.service.dto.FeedRequestDto
 import rs.kunpero.tacowizard.service.dto.FeedResponseDto
 import java.util.concurrent.locks.ReentrantLock
 
+@Service
 class HeyTacoIntegrationService(
     private val restTemplate: RestTemplate,
     private val methodsClient: MethodsClient,

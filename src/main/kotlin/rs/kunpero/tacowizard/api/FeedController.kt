@@ -37,8 +37,7 @@ class FeedController(
     @RequestMapping(
         value = ["/start"],
         method = [RequestMethod.POST],
-        consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE],
-        produces = [MediaType.APPLICATION_JSON_UTF8_VALUE]
+        consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE]
     )
     fun start(request: HttpServletRequest): SlashCommandResponse {
         val body = URLDecoder.decode(request.reader.lines().collect(Collectors.joining()), StandardCharsets.UTF_8)

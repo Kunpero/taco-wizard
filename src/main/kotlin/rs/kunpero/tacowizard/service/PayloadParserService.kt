@@ -1,14 +1,12 @@
 package rs.kunpero.tacowizard.service
 
 import com.slack.api.app_backend.slash_commands.payload.SlashCommandPayload
-import com.slack.api.methods.SlackApiException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import rs.kunpero.tacowizard.service.dto.FeedRequestDto
 import rs.kunpero.tacowizard.util.FeedParserUtils.Companion.parsePayload
 import rs.kunpero.tacowizard.util.exception.PayloadParserException
-import java.io.IOException
 
 @Service
 class PayloadParserService(
@@ -19,7 +17,6 @@ class PayloadParserService(
         private val log: Logger = LoggerFactory.getLogger(PayloadParserService::class.java)
     }
 
-    @Throws(PayloadParserException::class, NumberFormatException::class, IOException::class, SlackApiException::class)
     fun parse(payload: SlashCommandPayload): FeedRequestDto {
         log.info("Incoming text: [{}]", payload.text)
         val parsedText: List<String> = parsePayload(payload)
