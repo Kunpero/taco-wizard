@@ -1,6 +1,6 @@
 package rs.kunpero.tacowizard.integration.dto
 
-class GiveTacoRequest (
+data class GiveTacoRequest (
     val token: String,
     val uid: String,
     val amount: Int,
