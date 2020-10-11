@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.service.dto
+package rs.kunpero.tacowizard.service.dto
 
 class FeedResponseDto(
     val isSuccessful: Boolean,

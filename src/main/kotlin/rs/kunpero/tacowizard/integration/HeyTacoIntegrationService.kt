@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.integration
+package rs.kunpero.tacowizard.integration
 
 import com.slack.api.methods.MethodsClient
 import com.slack.api.methods.request.chat.ChatPostMessageRequest
@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpEntity
 import org.springframework.web.client.RestTemplate
-import rs.kunpero.fatpak.integration.dto.GiveTacoRequest
-import rs.kunpero.fatpak.integration.dto.GiveTacoResponse
-import rs.kunpero.fatpak.service.dto.FeedRequestDto
-import rs.kunpero.fatpak.service.dto.FeedResponseDto
+import rs.kunpero.tacowizard.integration.dto.GiveTacoRequest
+import rs.kunpero.tacowizard.integration.dto.GiveTacoResponse
+import rs.kunpero.tacowizard.service.dto.FeedRequestDto
+import rs.kunpero.tacowizard.service.dto.FeedResponseDto
 import java.util.concurrent.locks.ReentrantLock
 
 class HeyTacoIntegrationService(

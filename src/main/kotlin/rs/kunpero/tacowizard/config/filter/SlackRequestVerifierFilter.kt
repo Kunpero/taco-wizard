@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.config.filter
+package rs.kunpero.tacowizard.config.filter
 
 import com.slack.api.app_backend.SlackSignature
 import com.slack.api.app_backend.events.servlet.SlackSignatureVerifier

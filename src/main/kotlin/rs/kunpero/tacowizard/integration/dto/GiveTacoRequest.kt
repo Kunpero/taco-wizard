@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.integration.dto
+package rs.kunpero.tacowizard.integration.dto
 
 class GiveTacoRequest (
     val token: String,

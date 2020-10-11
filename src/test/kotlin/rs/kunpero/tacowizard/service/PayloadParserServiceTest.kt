@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.service
+package rs.kunpero.tacowizard.service
 
 import com.slack.api.app_backend.slash_commands.payload.SlashCommandPayload
 import com.slack.api.model.User
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.junit4.SpringRunner
-import rs.kunpero.fatpak.util.exception.PayloadParserException
+import rs.kunpero.tacowizard.util.exception.PayloadParserException
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(classes = [UserCacheService::class, PayloadParserService::class])
@@ -23,7 +23,7 @@ class PayloadParserServiceTest {
     lateinit var payloadParserService: PayloadParserService
 
     @Test(expected = PayloadParserException::class)
-    fun noUserIdInTheWorkspaceFailTest() {
+    fun `No userId in the workspace`() {
         val payload = SlashCommandPayload()
         payload.userName = "admin"
         payload.text = "@user4 3"
@@ -35,7 +35,7 @@ class PayloadParserServiceTest {
     }
 
     @Test
-    fun userInCacheSuccessTest() {
+    fun `User in cache success scenario`() {
         val payload = SlashCommandPayload()
         payload.userId = "user0Id"
         payload.userName = "admin"
@@ -53,7 +53,7 @@ class PayloadParserServiceTest {
 
 
     @Test(expected = NumberFormatException::class)
-    fun incorrectAmountFormatFailTest() {
+    fun `Incorrect amount format`() {
         val payload = SlashCommandPayload()
         payload.text = "@user4 pepe"
         payload.userName = "admin"
@@ -65,7 +65,7 @@ class PayloadParserServiceTest {
     }
 
     @Test(expected = PayloadParserException::class)
-    fun zeroAmountFailTest() {
+    fun `Zero amount`() {
         val payload = SlashCommandPayload()
         payload.text = "@user4 0"
         payload.userName = "admin"
@@ -77,7 +77,7 @@ class PayloadParserServiceTest {
     }
 
     @Test(expected = PayloadParserException::class)
-    fun negativeAmountFailTest() {
+    fun `Negative amount`() {
         val payload = SlashCommandPayload()
         payload.text = "@user4 -1"
         payload.userName = "admin"
@@ -89,7 +89,7 @@ class PayloadParserServiceTest {
     }
 
     @Test(expected = PayloadParserException::class)
-    fun commandNotPermittedFailTest() {
+    fun `Command not permitted`() {
         val payload = SlashCommandPayload()
         payload.text = "@user4 -1"
         payload.userName = "notAdmin"
@@ -100,7 +100,7 @@ class PayloadParserServiceTest {
         payloadParserService.parse(payload)
     }
 
-    private fun buildUser(isAdmin: Boolean): User? {
+    private fun buildUser(isAdmin: Boolean): User {
         val user = User()
         user.isAdmin = isAdmin
         return user

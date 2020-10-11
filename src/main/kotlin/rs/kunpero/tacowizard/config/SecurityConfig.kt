@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.config
+package rs.kunpero.tacowizard.config
 
 import com.slack.api.app_backend.events.servlet.SlackSignatureVerifier
 import org.springframework.boot.web.servlet.FilterRegistrationBean
@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.web.util.matcher.RequestMatcher
-import rs.kunpero.fatpak.config.filter.SlackRequestVerifierFilter
+import rs.kunpero.tacowizard.config.filter.SlackRequestVerifierFilter
 import javax.servlet.http.HttpServletRequest
 
 @EnableWebSecurity

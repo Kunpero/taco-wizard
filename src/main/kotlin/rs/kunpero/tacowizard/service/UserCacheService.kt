@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.service
+package rs.kunpero.tacowizard.service
 
 import com.slack.api.methods.MethodsClient
 import com.slack.api.methods.request.users.UsersListRequest

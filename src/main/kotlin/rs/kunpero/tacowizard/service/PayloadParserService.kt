@@ -1,13 +1,13 @@
-package rs.kunpero.fatpak.service
+package rs.kunpero.tacowizard.service
 
 import com.slack.api.app_backend.slash_commands.payload.SlashCommandPayload
 import com.slack.api.methods.SlackApiException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
-import rs.kunpero.fatpak.service.dto.FeedRequestDto
-import rs.kunpero.fatpak.util.FeedParserUtils.Companion.parsePayload
-import rs.kunpero.fatpak.util.exception.PayloadParserException
+import rs.kunpero.tacowizard.service.dto.FeedRequestDto
+import rs.kunpero.tacowizard.util.FeedParserUtils.Companion.parsePayload
+import rs.kunpero.tacowizard.util.exception.PayloadParserException
 import java.io.IOException
 
 @Service

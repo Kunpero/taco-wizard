@@ -1,14 +1,14 @@
-package rs.kunpero.fatpak.util
+package rs.kunpero.tacowizard.util
 
 import com.slack.api.app_backend.slash_commands.payload.SlashCommandPayload
 import org.junit.Assert
 import org.junit.Test
-import rs.kunpero.fatpak.util.FeedParserUtils.Companion.parsePayload
-import rs.kunpero.fatpak.util.exception.PayloadParserException
+import rs.kunpero.tacowizard.util.FeedParserUtils.Companion.parsePayload
+import rs.kunpero.tacowizard.util.exception.PayloadParserException
 
 class FeedParserUtilsTest {
     @Test
-    fun testCorrectTextWithCommentary() {
+    fun `Correct text with commentary`() {
         val message = "@vrnsky 2 You are so cool!"
         val payload = SlashCommandPayload()
         payload.text = message
@@ -20,7 +20,7 @@ class FeedParserUtilsTest {
     }
 
     @Test
-    fun testCorrectTextWithoutCommentary() {
+    fun `Correct text without commentary`() {
         val message = "@vrnsky 2"
         val payload = SlashCommandPayload()
         payload.text = message
@@ -31,7 +31,7 @@ class FeedParserUtilsTest {
     }
 
     @Test(expected = PayloadParserException::class)
-    fun textIsTooShortFailTest() {
+    fun `Argument list is too short`() {
         val message = "@vrnsky"
         val payload = SlashCommandPayload()
         payload.text = message
@@ -39,7 +39,7 @@ class FeedParserUtilsTest {
     }
 
     @Test(expected = PayloadParserException::class)
-    fun textIsEmptyFailTest() {
+    fun `Text is empty`() {
         val message = ""
         val payload = SlashCommandPayload()
         payload.text = message
@@ -47,7 +47,7 @@ class FeedParserUtilsTest {
     }
 
     @Test(expected = PayloadParserException::class)
-    fun textIsNullFailTest() {
+    fun `Text is null`() {
         val payload = SlashCommandPayload()
         parsePayload(payload)
     }

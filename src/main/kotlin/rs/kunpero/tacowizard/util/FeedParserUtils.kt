@@ -1,9 +1,9 @@
-package rs.kunpero.fatpak.util
+package rs.kunpero.tacowizard.util
 
 import com.slack.api.app_backend.slash_commands.payload.SlashCommandPayload
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import rs.kunpero.fatpak.util.exception.PayloadParserException
+import rs.kunpero.tacowizard.util.exception.PayloadParserException
 
 class FeedParserUtils {
     companion object {

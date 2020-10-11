@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.api
+package rs.kunpero.tacowizard.api
 
 import com.slack.api.app_backend.slash_commands.SlashCommandPayloadParser
 import com.slack.api.app_backend.slash_commands.response.SlashCommandResponse
@@ -10,10 +10,10 @@ import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
-import rs.kunpero.fatpak.integration.HeyTacoIntegrationService
-import rs.kunpero.fatpak.service.PayloadParserService
-import rs.kunpero.fatpak.util.MessageSourceHelper
-import rs.kunpero.fatpak.util.exception.PayloadParserException
+import rs.kunpero.tacowizard.integration.HeyTacoIntegrationService
+import rs.kunpero.tacowizard.service.PayloadParserService
+import rs.kunpero.tacowizard.util.MessageSourceHelper
+import rs.kunpero.tacowizard.util.exception.PayloadParserException
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 import java.util.stream.Collectors

@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.config
+package rs.kunpero.tacowizard.config
 
 import com.google.gson.Gson
 import com.slack.api.Slack

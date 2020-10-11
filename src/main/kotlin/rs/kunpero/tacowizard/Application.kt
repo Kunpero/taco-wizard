@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak
+package rs.kunpero.tacowizard
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration

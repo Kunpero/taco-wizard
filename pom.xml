@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>rs.kunpero</groupId>
-    <artifactId>fat-pak</artifactId>
+    <artifactId>taco-wizard</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>fat-pak</name>
+    <name>taco-wizard</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -92,7 +92,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>rs.kunpero.fatpak.Application</mainClass>
+                    <mainClass>rs.kunpero.tacowizard.Application</mainClass>
                 </configuration>
             </plugin>
             <plugin>

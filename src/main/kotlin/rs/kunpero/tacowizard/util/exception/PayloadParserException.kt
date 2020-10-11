@@ -1,3 +1,3 @@
-package rs.kunpero.fatpak.util.exception
+package rs.kunpero.tacowizard.util.exception
 
 class PayloadParserException(message: String) : RuntimeException(message)

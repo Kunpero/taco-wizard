@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.util
+package rs.kunpero.tacowizard.util
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.MessageSource

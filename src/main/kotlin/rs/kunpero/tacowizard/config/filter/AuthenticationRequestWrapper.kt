@@ -1,4 +1,4 @@
-package rs.kunpero.fatpak.config.filter
+package rs.kunpero.tacowizard.config.filter
 
 import org.apache.commons.io.IOUtils
 import java.io.BufferedReader
